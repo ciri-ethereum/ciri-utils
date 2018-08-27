@@ -11,8 +11,8 @@ Gem::Specification.new do |spec|
 
   spec.summary       = %q{Toolkit module of [Ciri](https://github.com/ciri-ethereum/ciri)}
   spec.description   = %q{Functions include: big endian encode/decode, hex/bytes convert, keccak256 ...}
-  spec.homepage      = "https://github.com/ciri-ethereum/ciri"
-  spec.license       = "Apache 2.0"
+  spec.homepage      = "https://github.com/ciri-ethereum/ciri-utils"
+  spec.license       = "MIT"
 
   spec.files         = `git ls-files -z`.split("\x0").reject do |f|
     f.match(%r{^(test|spec|features)/})
