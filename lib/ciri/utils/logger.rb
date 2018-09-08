@@ -59,18 +59,10 @@ module Ciri
         def setup(level:)
           @global_logger = ::Logger.new(STDERR, level: level)
           global_logger.datetime_format = '%Y-%m-%d %H:%M:%S'
-          set_concurrent_logger(level: global_logger.level)
-        end
-
-        private
-
-        def set_concurrent_logger(level:)
-          require 'concurrent'
-          Concurrent.use_simple_logger(level = level)
-        rescue LoadError
-          nil
         end
       end
+
+      protected
 
       def debug(message)
         add(::Logger::DEBUG, message)
@@ -91,9 +83,10 @@ module Ciri
       private
 
       def add(severity, message = nil, progname = logging_name)
-        Logger.global_logger.add(severity, message, progname)
+        Logger.global_logger&.add(severity, message, progname)
       end
 
     end
   end
 end
+
